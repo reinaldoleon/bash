@@ -6,9 +6,9 @@ PUBLIC_SUBNET_NAME=Public-Subnet
 PRIVATE_SUBNET_NAME=Private-Subnet
 BBDD_SUBNET_NAME=BBDD-Subnet
 echo "
-######################
-##CREACION DE LA VPC##
-######################
+##############
+##VPC CREATE##
+##############
 "
 #Creamos la VPC y Anotamos el ID= vpc-0592e214c51b14e50 de la salida para colocar el tag Name 
 VPC_PRINCIPAL_ID=$(aws ec2 create-vpc --cidr-block 10.0.0.0/16 --region ${REGION} | jq -r '.Vpc.VpcId')
@@ -18,7 +18,7 @@ echo "${VPC_PRINCIPAL_ID}" done
 
 echo "
 ###############################
-##CREAMOS LAS PUBLIC SUBNETS ##
+##CREATE THE PUBLIC SUBNETS ##
 ###############################
 "
 #Creamos la primera subred pública en la AZA / Anotamos el ID= subnet-08847660e83c390df 
@@ -36,7 +36,7 @@ echo "Public Subnet AZC = ${PUBLIC_SUBNET_AZC} is done"
 
 echo "
 #################################
-##CREAMOS LAS PRIVATES SUBNETS ##
+##CREATE THE PRIVATES SUBNETS ##
 #################################
 "
 #Creamos la primera subred privada en la AZA / Anotamos el ID= subnet-064b77270d5829c24
@@ -54,7 +54,7 @@ echo "Private Subnet AZC = ${PRIVATE_SUBNET_AZC} is done"
 
 echo "
 #################################
-##CREAMOS LAS BBDD SUBNETS ##
+##CREATE THE BBDD SUBNETS      ##
 #################################
 "
 #Creamos la primera subred privada en la AZA / Anotamos el ID= subnet-064b77270d5829c24
@@ -71,9 +71,9 @@ echo "BBDD Subnet AZB = ${BBDD_SUBNET_AZB} is done"
 echo "BBDD Subnet AZC = ${BBDD_SUBNET_AZC} is done"
 
 echo "
-###############
-##CREATE IGW ##
-###############
+###################
+##CREATE THE IGW ##
+###################
 "
 #Creamos el internetgateway para la VPC / Anotamos el ID= igw-0b7a14cd0e05dfe6a
 IGW_VPC_PRINCIPAL=$(aws ec2 create-internet-gateway | jq -r '.InternetGateway.InternetGatewayId')
